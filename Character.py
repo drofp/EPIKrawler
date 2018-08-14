@@ -1,4 +1,6 @@
-# Author Vinh Truong
+"""
+Parent Character module to be inherited by entity classes
+"""
 
 import Pickups
 
@@ -14,7 +16,7 @@ class Character(object):
 
     ################## INTERACTION ###################
 
-    def shoot(self, direction: (int, int)):
+    def shoot(self, direction: (int, int)) -> (int, int, int):
         # Stage will be 400height x 500width
         if self.weapon == None:
             # Attack will be 40 width x 50 length

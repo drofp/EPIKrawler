@@ -1,4 +1,6 @@
-# Author Vinh Truong
+"""
+Two pick-up types of items
+"""
 
 from Items import Item
 

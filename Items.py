@@ -1,4 +1,6 @@
-# Author Vinh Truong
+"""
+Parent module for pick-ups 
+"""
 
 class Item(object):
 
