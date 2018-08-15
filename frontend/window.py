@@ -7,10 +7,14 @@ import pygame
 class Window(object):
     """Reference: http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/"""
     def __init__(self):
-        
         self.running = True
+        backgroundColor = (0,0,255)
         (self.width, self.height) = (500, 500)
+
         self.screen = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_caption("Test Window")
+        self.screen.fill(backgroundColor)
+
 
     def init_window(self):
         
