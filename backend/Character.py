@@ -11,17 +11,14 @@ class Character(object):
         self.crit = crit
         self.weapon = None
         self. position = position
-
     ################## INTERACTION ###################
 
     def shoot(self, direction: (int, int)):
-        # Stage will be 400height x 500width
+        # Stage will be 400height x 700width
         if self.weapon == None:
-            # Attack will be 40 width x 50 length
+            # Attack will be 30 width x 50 length
             pass
 
-
-    
     ################## GET METHODS ###################
 
     def get_speed(self) -> int:
