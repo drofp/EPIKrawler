@@ -1,6 +1,6 @@
 # Author Vinh Truong
 
-import Pickups
+import pickups
 import pygame
 import time
 
@@ -13,9 +13,9 @@ ATTACK = pygame.K_j
 
 tick = 0.01 # length of tick in sec
 
-class CharacterLogic(object):
+class characterLogic(object):
 
-    def __init__(self, speed, attack: int, health: int, resistance: int, crit: float, x:float, y:float, max_speed=0.5):
+    def __init__(self, speed, attack: int, health: int, resistance: int, crit: float, x:float, y:float, max_speed=0.25):
         self.speed = speed
         self.max_speed = max_speed
         self.attack = attack
@@ -37,17 +37,18 @@ class CharacterLogic(object):
             pass
 
     
-    def move(self, dx, dy):
+    def move(self, row_direction, col_direction):
         """
         Primitive movement system, sets the player velocity to the max
         velocity
         """
         if self.move_cooldown > time.time():
+            pass
 
         self.move_cooldown += tick
         self.speed = self.max_speed
-        self.x += self.speed*tick*direction[0]
-        self.y += self.speed*tick*direction[1]
+        self.x += self.speed*tick*row_direction
+        self.y += self.speed*tick*col_direction
 
     
     def move_stop(self):
