@@ -1,14 +1,17 @@
 #!/usr/bin/env python3.6
 
-"""Base window class for general window creation and resize behavior"""
+"""
+Base window class for general window creation and resize behavior
+"""
 
 import pygame
+import colors
 
-class Window(object):
+class Window:
     """Reference: http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/"""
     def __init__(self):
         self.running = True
-        backgroundColor = (0,0,255)
+        backgroundColor = colors.DARK_BLUE
         (self.width, self.height) = (500, 500)
 
         self.screen = pygame.display.set_mode((self.width, self.height))
@@ -26,7 +29,7 @@ class Window(object):
                 if event.type == pygame.QUIT:
                     self.running = False
                     pygame.display.quit()
-                    
+                     
 def main():
     pygame.init()
 
