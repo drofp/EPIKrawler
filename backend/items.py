@@ -1,8 +1,6 @@
-"""
-Parent module for pick-ups 
-"""
+# Author Vinh Truong
 
-class Item(object):
+class item(object):
 
     def __init__(self, name: str, picture: 'picture'):
         self.name = name
