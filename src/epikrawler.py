@@ -7,23 +7,26 @@ import os
 sys.path.append(os.path.join(os.path.abspath(""),'frontend'))
 sys.path.append(os.path.join(os.path.abspath(""), 'backend'))
 
-import window
+from frontend import *
 
 def main():
     pygame.init()
+    pygame.time.Clock()
 
     running = True
 
-    mainWindow = window.Window()
+    mainScreenW, mainScreenH = 500, 500
+    mainScreen = pygame.display.set_mode((mainScreenW, mainScreenH))
+    mainWindow = window.Window(mainScreen)
     mainWindow.init_window()
 
-    # TODO: Event Loop
+    mainPlayerW, mainPlayerH = 100, 100
+    mainPlayer = character.CharacterDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
+                                            startY=mainScreenH/2 - mainPlayerH/2, rectChar=True)
     while running:
-        mainWindow.update_window(running)
-
-    # TODO: Updating
-
-    # TODO: Drawing
+        # Main event loop
+        for event in pygame.event.get():
+            mainWindow.update_window(event, running)
 
 if __name__ == '__main__':
     main()

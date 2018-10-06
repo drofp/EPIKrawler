@@ -12,28 +12,27 @@ class Window:
     """Base window class for starting the game and creating windows as necessary.
     
     Reference: http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/"""
-    def __init__(self):
-        backgroundColor = colors.DARK_BLUE
-        (self.width, self.height) = (500, 500)
 
-        self.screen = pygame.display.set_mode((self.width, self.height))
+    def __init__(self, screen):
+        backgroundColor = colors.DARK_BLUE
+
+        self.screen = screen
         pygame.display.set_caption("Test Window")
         self.screen.fill(backgroundColor)
-
 
     def init_window(self):
         """Initializes window"""
         pygame.display.init()
         pygame.display.flip()
                      
-    def update_window(self, running):
-        """Updates window"""
+    def update_window(self, event, running):
+        """Updates window, closes if user clicks close button"""
         pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.display.quit()
-                sys.exit()
+        
+        if event.type == pygame.QUIT:
+            running = False
+            pygame.display.quit()
+            sys.exit()
 
 
 def main():
@@ -45,7 +44,8 @@ def main():
     testWindow.init_window()
 
     while running:
-        testWindow.update_window(running)
+        for event in pygame.event.get():
+            testWindow.update_window(event, running)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
 #/usr/bin/env python3.6
 
+import pygame
+
 """
 Parent class for all items
 
