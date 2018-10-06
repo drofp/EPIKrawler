@@ -44,9 +44,9 @@ class CharacterDisplay(pygame.sprite.Sprite):
 
         self.image = pygame.Surface([hitboxWidth, hitboxHeight])
 
-    def update(self, screen, keysPressed):
+    def update_loc_deltas(self, keysPressed):
         """
-        Updates position of character.
+        Updates change in position of character.
 
         Uses logic from backend.
         """
@@ -66,6 +66,9 @@ class CharacterDisplay(pygame.sprite.Sprite):
                 self.deltaY = 5
             else:
                 self.deltaY = 0
+
+    def update_loc(self, screen):
+        """Updates location of character for display."""
 
         self.x += self.deltaX
         self.y += self.deltaY

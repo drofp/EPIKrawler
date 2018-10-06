@@ -36,9 +36,10 @@ def main():
                 pygame.display.quit()
                 sys.exit()
             
-            mainScreen.fill(backgroundImg)
-            mainPlayer.update(mainScreen, keysPressed)
+            mainPlayer.update_loc_deltas(keysPressed)
         
+        mainScreen.fill(backgroundImg)
+        mainPlayer.update_loc(mainScreen)
         pygame.display.update()
         clock.tick(60) # in FPS
 
