@@ -25,11 +25,13 @@ class Window:
         pygame.display.init()
         pygame.display.flip()
                      
-    def update_window(self, event, running):
-        """Updates window, closes if user clicks close button"""
+    def update_window(self, event, keysPressed, running):
+        """Updates window, closes if user clicks close button.
+        
+        Press 'q' to quit, or click the close button"""
         pygame.display.update()
         
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT or keysPressed[pygame.K_q]:
             running = False
             pygame.display.quit()
             sys.exit()

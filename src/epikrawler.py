@@ -11,7 +11,7 @@ from frontend import *
 
 def main():
     pygame.init()
-    pygame.time.Clock()
+    clock = pygame.time.Clock()
 
     running = True
 
@@ -26,7 +26,11 @@ def main():
     while running:
         # Main event loop
         for event in pygame.event.get():
-            mainWindow.update_window(event, running)
+            keysPressed = pygame.key.get_pressed()
+
+            mainWindow.update_window(event, keysPressed, running)
+        
+        clock.tick(60) # in FPS
 
 if __name__ == '__main__':
     main()
