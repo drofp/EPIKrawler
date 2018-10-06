@@ -12,8 +12,18 @@ import window
 def main():
     pygame.init()
 
-    testWindow = window.Window()
-    testWindow.init_window()
+    running = True
+
+    mainWindow = window.Window()
+    mainWindow.init_window()
+
+    # TODO: Event Loop
+    while running:
+        mainWindow.update_window(running)
+
+    # TODO: Updating
+
+    # TODO: Drawing
 
 if __name__ == '__main__':
     main()
