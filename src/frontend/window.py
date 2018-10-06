@@ -13,8 +13,8 @@ class Window:
     
     Reference: http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/"""
 
-    def __init__(self, screen):
-        backgroundColor = colors.DARK_BLUE
+    def __init__(self, screen, backgroundImg):
+        backgroundColor = backgroundImg
 
         self.screen = screen
         pygame.display.set_caption("Test Window")
@@ -24,17 +24,6 @@ class Window:
         """Initializes window"""
         pygame.display.init()
         pygame.display.flip()
-                     
-    def update_window(self, event, keysPressed, running):
-        """Updates window, closes if user clicks close button.
-        
-        Press 'q' to quit, or click the close button"""
-        pygame.display.update()
-        
-        if event.type == pygame.QUIT or keysPressed[pygame.K_q]:
-            running = False
-            pygame.display.quit()
-            sys.exit()
 
 
 def main():
@@ -44,10 +33,6 @@ def main():
 
     testWindow = Window()
     testWindow.init_window()
-
-    while running:
-        for event in pygame.event.get():
-            testWindow.update_window(event, running)
 
 
 if __name__ == '__main__':

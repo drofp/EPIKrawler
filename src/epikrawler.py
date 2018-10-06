@@ -15,21 +15,31 @@ def main():
 
     running = True
 
+    backgroundImg = colors.DARK_BLUE
+
     mainScreenW, mainScreenH = 500, 500
     mainScreen = pygame.display.set_mode((mainScreenW, mainScreenH))
-    mainWindow = window.Window(mainScreen)
+    mainWindow = window.Window(mainScreen, backgroundImg)
     mainWindow.init_window()
 
     mainPlayerW, mainPlayerH = 100, 100
     mainPlayer = character.CharacterDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
                                             startY=mainScreenH/2 - mainPlayerH/2, rectChar=True)
+    
     while running:
         # Main event loop
         for event in pygame.event.get():
             keysPressed = pygame.key.get_pressed()
 
-            mainWindow.update_window(event, keysPressed, running)
+            if event.type == pygame.QUIT or keysPressed[pygame.K_q]:
+                running = False
+                pygame.display.quit()
+                sys.exit()
+            
+            mainScreen.fill(backgroundImg)
+            mainPlayer.update(mainScreen, keysPressed)
         
+        pygame.display.update()
         clock.tick(60) # in FPS
 
 if __name__ == '__main__':

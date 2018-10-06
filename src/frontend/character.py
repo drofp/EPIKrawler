@@ -17,7 +17,7 @@ class CharacterDisplay(pygame.sprite.Sprite):
     """For creating and displaying characters."""
 
     def __init__(self, screen, rectChar=False, startX=0, startY=0, hitboxWidth=100, hitboxHeight=100, 
-                        deltaX=2, deltaY=2):
+                        deltaX=0, deltaY=0):
         """Creates a character object.
         
         This includes players and NPC's.
@@ -37,20 +37,42 @@ class CharacterDisplay(pygame.sprite.Sprite):
         self.deltaX = deltaX
         self.deltaY = deltaY
 
-        if rectChar:
+        self.rectChar = rectChar
+
+        if self.rectChar:
             pygame.draw.rect(screen, colors.GREEN, [self.x, self.y, self.hitboxWidth, self.hitboxHeight])
 
         self.image = pygame.Surface([hitboxWidth, hitboxHeight])
 
-    def update(self, keyPressed):
+    def update(self, screen, keysPressed):
         """
         Updates position of character.
 
         Uses logic from backend.
         """
 
+        if keysPressed[pygame.K_LEFT]:
+            self.deltaX = -5
+        else:
+            if keysPressed[pygame.K_RIGHT]:
+                self.deltaX = 5
+            else:
+                self.deltaX = 0
 
-        pass
+        if keysPressed[pygame.K_UP]:
+            self.deltaY = -5
+        else:
+            if keysPressed[pygame.K_DOWN]:
+                self.deltaY = 5
+            else:
+                self.deltaY = 0
+
+        self.x += self.deltaX
+        self.y += self.deltaY
+
+        if self.rectChar:
+            pygame.draw.rect(screen, colors.GREEN, [
+                             self.x, self.y, self.hitboxWidth, self.hitboxHeight])
 
         
         
