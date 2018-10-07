@@ -20,7 +20,6 @@ def main():
     mainScreenW, mainScreenH = 500, 500
     mainScreen = pygame.display.set_mode((mainScreenW, mainScreenH))
     mainWindow = window.Window(mainScreen, backgroundImg)
-    mainWindow.init_window()
 
     mainPlayerW, mainPlayerH = 100, 100
     mainPlayer = character.CharacterDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
@@ -28,15 +27,14 @@ def main():
     
     while running:
         # Main event loop
+        keysPressed = pygame.key.get_pressed()
         for event in pygame.event.get():
-            keysPressed = pygame.key.get_pressed()
-
             if event.type == pygame.QUIT or keysPressed[pygame.K_q]:
                 running = False
                 pygame.display.quit()
                 sys.exit()
             
-            mainPlayer.update_loc_deltas(keysPressed)
+        mainPlayer.update_loc_deltas(keysPressed)
         
         mainScreen.fill(backgroundImg)
         mainPlayer.update_loc(mainScreen)

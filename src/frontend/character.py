@@ -3,14 +3,14 @@
 import pygame
 import colors
 
-# References: 
-# http://programarcadegames.com/python_examples/f.php?file=platform_jumper.py
-# http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
-
 """
 Parent class for all characters.
 
 Possible Characters: Player, enemies
+
+References: 
+http://programarcadegames.com/python_examples/f.php?file=platform_jumper.py
+http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
 """
 
 class CharacterDisplay(pygame.sprite.Sprite):
@@ -18,11 +18,13 @@ class CharacterDisplay(pygame.sprite.Sprite):
 
     def __init__(self, screen, rectChar=False, startX=0, startY=0, hitboxWidth=100, hitboxHeight=100, 
                         deltaX=0, deltaY=0):
-        """Creates a character object.
+        """
+        Creates a character object.
         
         This includes players and NPC's.
         
-        Setting 'rectChar' to True will instantiate a character as a rectangle."""
+        Setting 'rectChar' to True will instantiate a character as a rectangle.
+        """
 
         pygame.sprite.Sprite.__init__(self)
 
