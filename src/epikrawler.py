@@ -22,7 +22,7 @@ def main():
     mainWindow = window.Window(mainScreen, backgroundImg)
 
     mainPlayerW, mainPlayerH = 100, 100
-    mainPlayer = character.CharacterDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
+    mainPlayer = player_disp.PlayerDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
                                             startY=mainScreenH/2 - mainPlayerH/2, rectChar=True)
     
     while running:

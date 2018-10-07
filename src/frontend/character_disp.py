@@ -31,43 +31,19 @@ class CharacterDisplay(pygame.sprite.Sprite):
         # TODO: Add in instance var and sprite mode
         # self.sprite = sprite
 
+        self.rectChar = rectChar
         self.x = startX
         self.y = startY
         self.hitboxWidth = hitboxWidth
         self.hitboxHeight = hitboxHeight
-
         self.deltaX = deltaX
         self.deltaY = deltaY
-
-        self.rectChar = rectChar
 
         if self.rectChar:
             pygame.draw.rect(screen, colors.GREEN, [self.x, self.y, self.hitboxWidth, self.hitboxHeight])
 
         self.image = pygame.Surface([hitboxWidth, hitboxHeight])
 
-    def update_loc_deltas(self, keysPressed):
-        """
-        Updates change in position of character.
-
-        Uses logic from backend.
-        """
-
-        if keysPressed[pygame.K_LEFT]:
-            self.deltaX = -5
-        else:
-            if keysPressed[pygame.K_RIGHT]:
-                self.deltaX = 5
-            else:
-                self.deltaX = 0
-
-        if keysPressed[pygame.K_UP]:
-            self.deltaY = -5
-        else:
-            if keysPressed[pygame.K_DOWN]:
-                self.deltaY = 5
-            else:
-                self.deltaY = 0
 
     def update_loc(self, screen):
         """Updates location of character for display."""
@@ -79,7 +55,24 @@ class CharacterDisplay(pygame.sprite.Sprite):
             pygame.draw.rect(screen, colors.GREEN, [
                              self.x, self.y, self.hitboxWidth, self.hitboxHeight])
 
-        
+def main():
+    import window
+
+    backgroundImg = colors.DARK_BLUE
+
+    testScreenW, testScreenH = 500, 500
+    testScreen = pygame.display.set_mode((testScreenW, testScreenH))
+    testWindow = window.Window(testScreen, backgroundImg)
+
+    testPlayerW, testPlayerH = 100, 100
+    testPlayer = CharacterDisplay(testScreen, startX=testScreenW/2 - testPlayerW/2,
+                               startY=testScreenH/2 - testPlayerH/2, rectChar=True)
+
+    print("testPlayer's hitbox width is:", testPlayer.hitboxWidth)
+
+
+if __name__ == '__main__':
+    main()
         
 
 
