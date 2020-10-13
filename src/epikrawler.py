@@ -19,14 +19,15 @@ def main():
 
     backgroundImg = colors.DARK_BLUE
 
-    mainScreenW, mainScreenH = 500, 500
+    displayInfo = pygame.display.Info()
+    mainScreenW, mainScreenH = displayInfo.current_w, displayInfo.current_h
     mainScreen = pygame.display.set_mode((mainScreenW, mainScreenH))
     mainWindow = window.Window(mainScreen, backgroundImg)
 
     mainPlayerW, mainPlayerH = 100, 100
-    mainPlayer = player_disp.PlayerDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2, 
+    mainPlayer = player_disp.PlayerDisplay(mainScreen, startX=mainScreenW/2 - mainPlayerW/2,
                                             startY=mainScreenH/2 - mainPlayerH/2, rectChar=True)
-    
+
     while running:
         # Main event loop
         keysPressed = pygame.key.get_pressed()
@@ -35,9 +36,9 @@ def main():
                 running = False
                 pygame.display.quit()
                 sys.exit()
-            
+
         mainPlayer.update_loc_deltas(keysPressed)
-        
+
         mainScreen.fill(backgroundImg)
         mainPlayer.update_loc(mainScreen)
         pygame.display.update()
