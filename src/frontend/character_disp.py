@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.6
 
 import pygame
-from pygame.locals import *
 
 import colors
 
