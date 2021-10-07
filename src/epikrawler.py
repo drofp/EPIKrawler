@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.6
 
 import pygame
-from pygame.locals import *
 
 import collections
 import os
@@ -14,7 +13,11 @@ sys.path.append(
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), 'backend')))
 
-from frontend import *
+from frontend import (
+    colors,
+    player_disp,
+    window
+)
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
