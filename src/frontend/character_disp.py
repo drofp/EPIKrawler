@@ -11,18 +11,18 @@ class CharacterDisplay(pygame.sprite.Sprite):
 
     Possible Characters: Player, enemies
 
-    References: 
+    References:
     http://programarcadegames.com/python_examples/f.php?file=platform_jumper.py
     http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
     """
 
-    def __init__(self, screen, rectChar=False, startX=0, startY=0, hitboxWidth=100, hitboxHeight=100, 
+    def __init__(self, screen, rectChar=False, startX=0, startY=0, hitboxWidth=100, hitboxHeight=100,
                         deltaX=0, deltaY=0):
         """
         Creates a character object.
-        
+
         This includes players and NPC's.
-        
+
         Setting 'rectChar' to True will instantiate a character as a rectangle.
         """
 
@@ -44,7 +44,6 @@ class CharacterDisplay(pygame.sprite.Sprite):
 
         self.image = pygame.Surface([hitboxWidth, hitboxHeight])
 
-
     def update_loc(self, screen):
         """Updates location of character for display.
         """
@@ -63,26 +62,3 @@ class CharacterDisplay(pygame.sprite.Sprite):
         if self.rectChar:
             pygame.draw.rect(screen, colors.GREEN, [
                              self.x, self.y, self.hitboxWidth, self.hitboxHeight])
-
-def main():
-    import window
-
-    backgroundImg = colors.DARK_BLUE
-
-    testScreenW, testScreenH = 500, 500
-    testScreen = pygame.display.set_mode((testScreenW, testScreenH))
-    testWindow = window.Window(testScreen, backgroundImg)
-
-    testPlayerW, testPlayerH = 100, 100
-    testPlayer = CharacterDisplay(testScreen, startX=testScreenW/2 - testPlayerW/2,
-                               startY=testScreenH/2 - testPlayerH/2, rectChar=True)
-
-    print("testPlayer's hitbox width is:", testPlayer.hitboxWidth)
-
-
-if __name__ == '__main__':
-    main()
-        
-
-
-

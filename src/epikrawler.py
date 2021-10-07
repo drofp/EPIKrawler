@@ -16,10 +16,12 @@ from frontend import *
 
 DISPLAY_CONFIG_PATH = 'frontend/display_opt.ini'
 
+
 def parse_display_config(display_config_path):
     config = configparser.ConfigParser()
     config.read(display_config_path)
     return config
+
 
 def get_startup_params():
     """Return a tuple of startup params"""
@@ -67,6 +69,7 @@ def main():
         # For rough benchmarking runtime quickly
         # TODO: Show on window, like here: https://www.youtube.com/watch?v=HBbzYKMfx5Y
         print(clock.get_fps())
+
 
 if __name__ == '__main__':
     main()
