@@ -12,7 +12,7 @@ class PlayerDisplay(character_disp.CharacterDisplay):
 
     def __init__(self, screen, rectChar=False, startX=0, startY=0, hitboxWidth=100, hitboxHeight=100,
                  deltaX=0, deltaY=0):
-        super().__init__(screen, rectChar=rectChar, startX=startX, startY=startY, hitboxWidth=hitboxWidth, 
+        super().__init__(screen, rectChar=rectChar, startX=startX, startY=startY, hitboxWidth=hitboxWidth,
                         hitboxHeight=hitboxHeight, deltaX=deltaX, deltaY=deltaY)
 
     def update_loc_deltas(self, keysPressed):
@@ -42,22 +42,3 @@ class PlayerDisplay(character_disp.CharacterDisplay):
                 self.deltaY = 5
             else:
                 self.deltaY = 0
-    
-def main():
-    import window
-    import colors
-
-    backgroundImg = colors.DARK_BLUE
-
-    testScreenW, testScreenH = 500, 500
-    testScreen = pygame.display.set_mode((testScreenW, testScreenH))
-    testWindow = window.Window(testScreen, backgroundImg)
-
-    testPlayerW, testPlayerH = 100, 100
-    testPlayer = PlayerDisplay(testScreen, startX=testScreenW/2 - testPlayerW/2,
-                                      startY=testScreenH/2 - testPlayerH/2, rectChar=True)
-
-    print("testPlayer's hitbox width is:", testPlayer.hitboxWidth)
-
-if __name__ == '__main__':
-    main()

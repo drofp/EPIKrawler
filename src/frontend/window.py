@@ -7,7 +7,7 @@ import sys
 class Window:
     """
     Base window class for starting the game and creating windows as necessary.
-    
+
     Reference: http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/
 
     TODO: Resize behavior
@@ -22,12 +22,3 @@ class Window:
 
         pygame.display.init()
         pygame.display.flip()
-
-
-def main():
-    pygame.init()
-
-    testWindow = Window()
-
-if __name__ == '__main__':
-    main()
