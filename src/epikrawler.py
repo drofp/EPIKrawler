@@ -3,19 +3,39 @@
 import pygame
 from pygame.locals import *
 
-import sys
+import collections
 import os
+import sys
+
+import configparser
+
 sys.path.append(os.path.join(os.path.abspath(""), 'frontend'))
 sys.path.append(os.path.join(os.path.abspath(""), 'backend'))
 
 from frontend import *
 
+DISPLAY_CONFIG_PATH = 'frontend/display_opt.ini'
+
+def parse_display_config(display_config_path):
+    config = configparser.ConfigParser()
+    config.read(display_config_path)
+    return config
+
+def get_startup_params():
+    """Return a tuple of startup params"""
+    config = parse_display_config(DISPLAY_CONFIG_PATH)
+    startup_params = collections.namedtuple('StartupParam', 'MaxFps')
+    startup_params.MaxFps = int(config['LIMITS']['MaxFps'])
+    return startup_params
+
+
 def main():
+    startup_params = get_startup_params()
     pygame.init()
     clock = pygame.time.Clock()
 
     running = True
-    maxFPS = 60
+    maxFPS = startup_params.MaxFps
 
     backgroundImg = colors.DARK_BLUE
 
