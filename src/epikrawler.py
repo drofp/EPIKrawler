@@ -9,12 +9,16 @@ import sys
 
 import configparser
 
-sys.path.append(os.path.join(os.path.abspath(""), 'frontend'))
-sys.path.append(os.path.join(os.path.abspath(""), 'backend'))
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), 'frontend')))
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), 'backend')))
 
 from frontend import *
 
-DISPLAY_CONFIG_PATH = 'frontend/display_opt.ini'
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+
+DISPLAY_CONFIG_PATH = DIR_PATH + '/frontend/display_opt.ini'
 
 
 def parse_display_config(display_config_path):

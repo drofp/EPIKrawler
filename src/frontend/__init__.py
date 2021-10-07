@@ -5,7 +5,7 @@
 import os
 
 # Only works when called from module outside of frontend directory
-files = os.listdir(os.path.join(os.path.abspath(""), 'frontend'))
+files = os.listdir(os.path.join(os.path.dirname(__file__)))
 # for file in files:
 #     if file[-3:] == '.py' and file[:2] != '__':
 #         exec('from %s import *' % (file[:-3]))
